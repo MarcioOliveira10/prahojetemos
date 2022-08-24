@@ -28,10 +28,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
 
-
-
                 <main className={styles.main}>
                     <Header />
+
                     {children}
 
                 </main >
