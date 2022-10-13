@@ -1,8 +1,23 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource theme-ui */
 import type { NextPage } from 'next';
-
 import styles from '../styles/Home.module.css';
+declare module 'google-trends-api';
+import googleTrends from 'google-trends-api';
+
+
+export async function getStaticProps() {
+  const realTimeTrands = await googleTrends.realTimeTrends({
+    category: 'h',
+    geo: 'BR',
+  });
+  return {
+    props: {
+      trendList: [],
+    },
+    revalidate: 60 * 60,
+  };
+}
 
 
 const Home: NextPage = () => {
